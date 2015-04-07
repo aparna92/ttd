@@ -3,12 +3,8 @@ package command;
 import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 
-import model.ttd;
 import connectionprovider.ConnectionProvider;
 
 public class DeleteTTD {
@@ -22,13 +18,10 @@ public class DeleteTTD {
 					.prepareStatement("DELETE FROM ttd WHERE ID = ?");
 			stmt.setInt(1, id);
 			
+				
+				return stmt.execute();
+				
 			
-			ResultSet rs = stmt.executeQuery();
-			while (rs.next()) {
-				
-				return true;
-				
-			}
 
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
@@ -38,10 +31,6 @@ public class DeleteTTD {
 			return false;
 		}
 		
-		return false;
-		
-		
-		
 			
 		
 
@@ -50,7 +39,7 @@ public class DeleteTTD {
 
 	public static void main(String[] args) {
 		DeleteTTD command = new DeleteTTD();
-		boolean result =  command.execute(1);
+		boolean result =  command.execute(6);
 		System.out.println(result);
 	}
 }
